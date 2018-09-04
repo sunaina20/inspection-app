@@ -8,8 +8,7 @@ import { LoadingController, AlertController } from "ionic-angular";
 })
 export class SigninPage {
 
-  constructor(
-              private loadingCtrl: LoadingController,
+  constructor(private loadingCtrl: LoadingController,
               private alertCtrl: AlertController) {
   }
 
@@ -18,18 +17,12 @@ export class SigninPage {
       content: 'Signing you in...'
     });
     loading.present();
-    // this.authService.signin(form.value.email, form.value.password)
-    //   .then(data => {
         loading.dismiss();
-      // })
-      // .catch(error => {
-      //   loading.dismiss();
         const alert = this.alertCtrl.create({
           title: 'Signin Done!',
-          message: 'this is msg',
+          message: '',
           buttons: ['Ok']
         });
         alert.present();
-      // });
   }
 }
