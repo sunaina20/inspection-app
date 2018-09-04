@@ -1,0 +1,44 @@
+<ion-header class="transparent_header">
+    <ion-navbar>
+        <ion-title>Sign In</ion-title>
+    </ion-navbar>
+</ion-header>
+    <ion-content>
+        <div class="login">
+            <div class="logo" center>
+                <img src="assets/imgs/logo-claim.png">
+            </div>
+            <p class="irocovery_txt">Welcome to iRecovery</p>
+            <div class="login-form-section width80">
+                <ion-list class="form-box">
+                    <form [formGroup]="login_form">
+                       <ion-item>
+                            <ion-input type="email" placeholder="Email" [(ngModel)]="login.email" name="email" formControlName="email"></ion-input>
+                        </ion-item>
+                        <label style="color:red" class="err" *ngIf="(login_form.get('email').hasError('required') ) && login_form.get('email').dirty">
+                            <p class="error" *ngIf="login_form.get('email').hasError('required')  && login_form.get('email').dirty">*E-mail is required</p>
+                        </label>
+                        <ion-item>
+                            <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="login.password" formControlName="password"></ion-input>
+                        </ion-item>
+                        <label style="color:red" class="err" *ngIf="(login_form.get('password').hasError('required') ) && login_form.get('password').dirty">
+                            <p class="error" *ngIf="login_form.get('password').hasError('required')  && login_form.get('password').dirty">*Password is required</p>
+                        </label>
+                    </form>
+                </ion-list>
+              <div class="custom-checkbox remember-me">
+                 <div class="left-s">
+                    <ion-item>
+                       <ion-label>Remember Me</ion-label>
+                       <ion-checkbox color="dark" [(ngModel)]="login.remember"></ion-checkbox>
+                    </ion-item>
+                 </div>
+                 <div class="right-s">
+                    <a (click)= "forgetPassword()">Forgot Password?</a>
+                 </div>
+              </div>
+              <button class="btn-global" ion-button block (click)="loginSucc()" [disabled]="login_form.invalid" >Login</button>
+           </div>
+        </div>
+        <div class="new-user">Don’t have account?  <span class="bold" (click)= "signUp()">Sign Up</span></div>
+     </ion-content>

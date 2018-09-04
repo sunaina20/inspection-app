@@ -1,7 +1,8 @@
 {
-  "name": "tribal-inspection-app",
+  "name": "cards",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "pro_id": "02c057f0"
 }

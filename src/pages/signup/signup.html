@@ -1,0 +1,63 @@
+<ion-header class="transparent_header">
+    <ion-navbar hideBackButton>
+        <ion-buttons left>
+          <button ion-button icon-only (click)="goBack()">
+            <ion-icon><img class="cross-img" src="assets/icon/cross_icn.png"></ion-icon>
+          </button>
+      </ion-buttons>
+      <ion-title>Sign Up</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+    <div class="login">
+        <div class="logo" center>
+          <img src="assets/imgs/logo-claim.png">
+        </div>
+    
+        <div class="login-form-section width80">
+            <ion-list class="form-box">
+              <form [formGroup]="signup_form" >
+                <ion-item>
+                  <ion-input type="text" placeholder="First Name" name="firstname" [(ngModel)]="signup.firstname" formControlName="firstname" ></ion-input>
+                </ion-item>
+                <label style="color:red" class="err" *ngIf="(signup_form.get('firstname').hasError('pattern') || signup_form.get('firstname').hasError('required') || signup_form.get('firstname').hasError('minlength') || signup_form.get('firstname').hasError('maxlength') || signup_form.get('firstname').hasError('invalid')) && signup_form.get('firstname').dirty">
+                    <p class="error" *ngIf="signup_form.get('firstname').hasError('required')  && signup_form.get('firstname').dirty">*First name is required.</p>
+                    <p class="error" *ngIf="signup_form.get('firstname').hasError('pattern') && signup_form.get('firstname').dirty">*Please enter valid first name.</p>
+                    <p class="error" *ngIf="(!signup_form.get('firstname').hasError('pattern') && signup_form.get('firstname').hasError('maxlength')) && signup_form.get('firstname').dirty">*Length should be between 2 to 20.</p>
+                    <p class="error" *ngIf="(!signup_form.get('firstname').hasError('pattern') && signup_form.get('firstname').hasError('minlength')) && signup_form.get('firstname').dirty">*Length should be between 2 to 20.</p>
+                </label>
+                <ion-item>
+                  <ion-input type="text" placeholder="Last Name" name="lastname" [(ngModel)]="signup.lastname" formControlName="lastname"></ion-input>
+                </ion-item>
+                <label style="color:red" class="err" *ngIf="(signup_form.get('lastname').hasError('pattern') || signup_form.get('lastname').hasError('required') || signup_form.get('lastname').hasError('minlength') || signup_form.get('lastname').hasError('maxlength') || signup_form.get('lastname').hasError('invalid')) && signup_form.get('lastname').dirty">
+                    <p class="error" *ngIf="signup_form.get('lastname').hasError('required')  && signup_form.get('lastname').dirty">*Last name is required.</p>
+                    <p class="error" *ngIf="signup_form.get('lastname').hasError('pattern') && signup_form.get('lastname').dirty">*Please enter valid last name.</p>
+                    <p class="error" *ngIf="(!signup_form.get('lastname').hasError('pattern') && signup_form.get('lastname').hasError('maxlength')) && signup_form.get('lastname').dirty">*Length should be between 2 to 20.</p>
+                    <p class="error" *ngIf="(!signup_form.get('lastname').hasError('pattern') && signup_form.get('lastname').hasError('minlength')) && signup_form.get('lastname').dirty">*Length should be between 2 to 20.</p>
+                </label>
+                <ion-item>
+                  <ion-input type="email" placeholder="Enter your email" name="email" [(ngModel)]="signup.email" formControlName="email" maxlength="64"></ion-input>
+                </ion-item>
+                <label style="color:red" class="err" *ngIf="(signup_form.get('email').hasError('pattern') || signup_form.get('email').hasError('required') || signup_form.get('email').hasError('invalid')) && signup_form.get('email').dirty">
+                    <p class="error" *ngIf="signup_form.get('email').hasError('required')  && signup_form.get('email').dirty">*E-mail is required.</p>
+                    <p class="error" *ngIf="signup_form.get('email').hasError('pattern') && signup_form.get('email').dirty">*Please provide a valid e-mail.</p>
+                </label>
+                <ion-item>
+                   <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="signup.password" formControlName="password"></ion-input>
+                </ion-item>
+                <label style="color:red" class="err" *ngIf="(signup_form.get('password').hasError('pattern') || signup_form.get('password').hasError('required') || signup_form.get('password').hasError('minlength') || signup_form.get('password').hasError('maxlength')) && signup_form.get('password').dirty">
+                    <p class="error" *ngIf="signup_form.get('password').hasError('required') && signup_form.get('password').dirty">*Password is required.</p>
+                    <p class="error" *ngIf="signup_form.get('password').hasError('pattern') && signup_form.get('password').dirty">*Please provide a valid input.</p>
+                    <p class="error" *ngIf="(!signup_form.get('password').hasError('pattern') && signup_form.get('password').hasError('maxlength')) && signup_form.get('password').dirty">*Password length should be between 8 to 16.</p>
+                    <p class="error" *ngIf="(!signup_form.get('password').hasError('pattern') && signup_form.get('password').hasError('minlength')) && signup_form.get('password').dirty">*Password length should be between 8 to 16.</p>
+                </label>
+              </form>
+            </ion-list>
+            <div class="btn-block">
+              <button class="btn-global" ion-button block (click)="signUp()" [disabled]="signup_form.invalid" >Register</button>
+            </div>
+          </div>
+      </div>
+      <div class="new-user">Already have an account? <span class="bold" (click)="goBack()" >Sign In</span></div>
+</ion-content>
